@@ -57,6 +57,12 @@ jobs:
           xcrun simctl list devices --json
           xcrun simctl erase all
           xcrun simctl shutdown all
+          sudo killall -9 com.apple.CoreSimulator.CoreSimulatorService 2>/dev/null || true
+          killall "Simulator" 2>/dev/null || true
+          killall "iOS Simulator" 2>/dev/null || true
+          rm -rf ~/Library/Developer/CoreSimulator/Caches/* 2>/dev/null || true
+          rm -rf ~/Library/Logs/CoreSimulator/* 2>/dev/null || true
+          rm -rf ~/Library/Developer/Xcode/DerivedData/* 2>/dev/null || true
       - name: 🍺 Install Maestro
         run: |
           curl -Ls "https://get.maestro.mobile.dev" | bash
