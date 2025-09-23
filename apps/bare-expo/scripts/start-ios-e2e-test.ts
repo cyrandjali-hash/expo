@@ -166,7 +166,7 @@ async function testAsync(
 
   try {
     console.time(`\n📱 Starting Device - name[${TARGET_DEVICE}] udid[${deviceId}]`);
-    await spawnAsync('xcrun', ['simctl', 'boot', deviceId], { stdio: 'inherit' });
+    await spawnAsync('xcrun', ['simctl', 'bootstatus', deviceId, '-b'], { stdio: 'inherit' });
     await spawnAsync('open', ['-a', 'Simulator', '--args', '-CurrentDeviceUDID', deviceId], {
       stdio: 'inherit',
     });
